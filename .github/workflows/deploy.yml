@@ -17,10 +17,10 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - name: Bump version (patch)
-        run: |
-          npm version patch -m "chore(release): %s [skip ci]"
-          git push --follow-tags
+      # - name: Bump version (patch)
+      #   run: |
+      #     npm version patch -m "chore(release): %s [skip ci]"
+      #     git push --follow-tags
       # - name: Publish to Open VSX Registry
       #   uses: HaaLeo/publish-vscode-extension@v2
       #   with:
