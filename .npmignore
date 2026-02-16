@@ -1,0 +1,15 @@
+node_modules/
+out/
+dist/
+build/
+coverage/
+.vscode-test/
+*.vsix
+*.log
+.env*
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.idea/
+.vscode/
