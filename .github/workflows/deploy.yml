@@ -9,7 +9,7 @@ on:
 
 name: Deploy Extension
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,10 +17,31 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      # - name: Bump version (patch)
-      #   run: |
-      #     npm version patch -m "chore(release): %s [skip ci]"
-      #     git push --follow-tags
+      - run: npm run compile
+
+  release:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run release
       # - name: Publish to Open VSX Registry
       #   uses: HaaLeo/publish-vscode-extension@v2
       #   with:
