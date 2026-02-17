@@ -66,6 +66,23 @@
         }
       ],
       [
+        "semantic-release-vsce",
+        {
+          "packageVsix": true,
+          "publish": true
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "*.vsix"
+            }
+          ]
+        }
+      ],
+      [
         "@semantic-release/git",
         {
           "assets": [
@@ -73,10 +90,27 @@
             "package-lock.json",
             "CHANGELOG.md"
           ],
-          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+          "releaseRules": [
+            {
+              "type": "refactor",
+              "release": "patch"
+            },
+            {
+              "type": "perf",
+              "release": "patch"
+            },
+            {
+              "type": "fix",
+              "release": "patch"
+            },
+            {
+              "type": "feat",
+              "release": "minor"
+            }
+          ]
         }
-      ],
-      "@semantic-release/github"
+      ]
     ]
   },
   "devDependencies": {
@@ -95,6 +129,8 @@
     "eslint": "^9.39.2",
     "npm-run-all": "^4.1.5",
     "semantic-release": "^25.0.3",
+    "semantic-release-stop-before-publish": "^2.0.0",
+    "semantic-release-vsce": "^6.0.24",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.54.0"
   }
