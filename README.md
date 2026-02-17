@@ -117,12 +117,6 @@ Then install the generated `.vsix` file in VS Code.
 
 None currently. If you encounter any issues, please report them in the repository.
 
-## Release Notes
-
-### 0.0.2
-
-Initial release of Spec Kit Extension
-
 **Features:**
 - 5-stage workflow tracking (Constitution → Specify → Plan → Tasks → Analyze)
 - 9 documentation artifact monitoring with status indicators
