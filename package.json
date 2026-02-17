@@ -2,7 +2,7 @@
   "name": "spec-kit-extension",
   "displayName": "spec-kit",
   "description": "A spec-kit extension for VS Code",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "publisher": "SebastianSchreiber",
   "license": "MIT",
   "icon": "icon.png",
