@@ -24,10 +24,6 @@ jobs:
           node-version: 25
       - run: npm ci
       - run: npm audit signatures
-      # - name: Configure git identity
-      #   run: |
-      #     git config user.name "github-actions[bot]"
-      #     git config user.email "github-actions[bot]@users.noreply.github.com"
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,16 +31,3 @@ jobs:
           VSCE_PAT: ${{ secrets.VS_MARKETPLACE_TOKEN }}
           # In case you want to publish to Open VSX Registry
           # OVSX_PAT: ${{ secrets.OVSX_PAT }}
-      # - name: Release
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: npm run release
-      # - name: Publish to Open VSX Registry
-      #   uses: HaaLeo/publish-vscode-extension@v2
-      #   with:
-      #     pat: ${{ secrets.OPEN_VSX_TOKEN }}
-      # - name: Publish to Visual Studio Marketplace
-      #   uses: HaaLeo/publish-vscode-extension@v2
-      #   with:
-      #     pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
-      #     registryUrl: https://marketplace.visualstudio.com
